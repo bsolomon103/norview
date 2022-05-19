@@ -1,0 +1,50 @@
+{% extends 'base.html' %}
+{% block content %}
+{% if not graph %}
+<div class='row text-center'>
+    <div class='col'>
+        <h2 class='mt-2 mb-3'>Sankey</h2>
+    
+    </div>
+</div>
+<div class='row text-center '>
+    <div class='col-lg-3 mx-auto'>
+        <form class='form' enctype='multipart/form-data' action='' method='post'>
+            {% csrf_token %}
+            {{form.file_name}}
+            {{form.figure_title}}
+            {{form.columns}}
+            {{form.exclude_column}}
+            {{form.exclude_value}}
+            {{form.filter_column}}
+            {{form.filter_value}}
+            {{form.data}}
+             <button type='submit' class='btn btn primary mt-2' 
+             style="background-color: #800080; border-color:green; color: white">Draw</button>
+            <button type='reset' class='btn btn-primary mt-2' 
+            style="background-color: white; border-color: red; color: black " >Reset</button>
+        </form>
+    </div>
+</div>
+{% elif graph %}
+<div style='width:600;height:500'>
+    <a type='button' class='btn btn primary mt-2' href={% url 'graphs:download' file_name=name endpoint='sankey' %} 
+    style="background-color: #800080; border-color:green; color: white">Download</a>
+    
+    <a type='button' class='btn btn-primary mt-2' href={% url 'graphs:redraw'  endpoint='sankey' %}
+    style="background-color: white; border-color: red; color: black" >Redraw</a>
+    {{graph|safe}}
+</div>
+<script>
+    const goBack = () => {
+        window.history.back()
+    }
+</script>
+{% endif %}
+{% endblock %}
+
+
+
+
+  
+    
