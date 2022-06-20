@@ -1,0 +1,62 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+
+<link rel="stylesheet" type="text/css" href="{% static 'styles/styles.css' %}"/>
+{% block content %}
+<div class='row text-center mt-2'>
+    <div class='col'>
+        <h2><b>CHOOSE A SERVICE</b></h2>
+    </div>
+</div>
+
+<div class='home-grid'>
+    <div><img class='mb-2' src="{% static 'media/sankey-2.gif' %}" height='120' width='120'/>
+        <a type='button' class='btn btn primary' href={% url 'graphs:sankey' %} 
+            style="background-color: #800080; border-color:green; color: white">
+            <b>SANKEY</b>
+        </a>
+    </div>
+    <div><img class='mb-2' src="{% static 'media/treemap.png' %}" height='120' width='120'/>
+        <a type='button' class='btn btn primary' href={% url 'graphs:tree' %} 
+            style="background-color: #800080; border-color:green; color: white">
+            <b>TREEMAP</b>
+        </a>
+    </div>
+    <div><img class='mb-2' src="{% static 'media/table.gif' %}" height='120' width='120'/>
+        <a type='button' class='btn btn primary' href={% url 'graphs:table' %} 
+            style="background-color: #800080; border-color:green; color: white">
+            <b>TABLE</b>
+        </a>
+    </div>
+    <div><img class='mb-2' src="{% static 'media/scatterplot.gif' %}" height='120' width='160'/>
+         <a type='button' class='btn btn primary' href={% url 'graphs:scatter' %} 
+            style="background-color: #800080; border-color:green; color: white">
+            <b>SCATTERPLOT</b>
+        </a>
+     </div>
+     <div><img src="{% static 'media/append.gif' %}" height='120' width='120'/>
+        <a type='button' class='btn btn primary' href={% url 'graphs:append' %} 
+            style="background-color: #800080; border-color:green; color: white">
+            <b>APPEND</b>
+        </a>
+    </div>
+    <div><img class='mb-2' src="{% static 'media/doughnutChart3.png' %}" height='120' width='120'/>
+        <a type='button' class='btn btn primary' href={% url 'graphs:donut' %} 
+            style="background-color: #800080; border-color:green; color: white">
+            <b>DONUT</b>
+        </a>
+    </div>
+    <div><img class='mb-2' src="{% static 'media/split.gif' %}" height='120' width='120'/>
+        <a type='button' class='btn btn primary' href={% url 'graphs:split' %} 
+            style="background-color: #800080; border-color:green; color: white">
+            <b>SPLIT</b>
+        </a>
+    </div>
+
+</div>
+
+{% endblock %}
+
+

@@ -1,0 +1,49 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+
+<link rel="stylesheet" type="text/css" href="{% static 'styles/styles.css' %}"/>
+{% block content %}
+<div class='d-none row text-center mt-2'>
+    <div class='col'>
+        <h2><b>CHOOSE A SERVICE</b></h2>
+    </div>
+</div>
+
+<div class='home-grid'>
+    <div><img class='mb-2' src="{% static 'media/sankey-2.gif' %}" height='120' width='120'/>
+        <a type='button' class='btn btn primary' href={% url 'graphs:sankey' %} 
+            style="background-color: #000000; border-color:#FFD700; color: #FFD700">
+            <b>SANKEY</b>
+        </a>
+    </div>
+    <div><img class='mb-2' src="{% static 'media/treemap.png' %}" height='120' width='120'/>
+        <a type='button' class='btn btn primary' href={% url 'graphs:tree' %} 
+            style="background-color: #000000; border-color:#FFD700; color: #FFD700">
+            <b>TREEMAP</b>
+        </a>
+    </div>
+    <div><img class='mb-2' src="{% static 'media/table.gif' %}" height='120' width='120'/>
+        <a type='button' class='btn btn primary' href={% url 'graphs:table' %} 
+            style="background-color: #000000; border-color:#FFD700; color: #FFD700">
+            <b>TABLE</b>
+        </a>
+    </div>
+   <div><img class='mb-2' src="{% static 'media/scatterplot.gif' %}" height='120' width='160'/>
+         <a type='button' class='btn btn primary' href={% url 'graphs:scatter' %} 
+            style="background-color: #000000; border-color:#FFD700; color: #FFD700">
+            <b>SCATTERPLOT</b>
+        </a>
+    </div>
+    <div><img class='mb-2' src="{% static 'media/doughnutChart3.png' %}" height='120' width='120'/>
+        <a type='button' class='btn btn primary' href={% url 'graphs:donut' %} 
+            style="background-color: #000000; border-color:#FFD700; color: #FFD700">
+            <b>DONUT</b>
+        </a>
+    </div> 
+</div>
+
+{% endblock %}
+
+

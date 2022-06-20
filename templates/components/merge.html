@@ -1,0 +1,56 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+{% if not data %}
+    {% if not error %}
+        <div class='row text-center'>
+            <div class='col'>
+                <h2 class='mt-2 mb-3'>Merge</h2>
+                <img class='mt-2 mb-2' src="{% static 'media/merger.gif' %}" width='100', height='70'/>
+            </div>
+        </div>
+        <div class='row text-center '>
+            <div class='col-lg-3 mx-auto'>
+                <form class='form' enctype='multipart/form-data' action='' method='post'>
+                    {% csrf_token %}
+                    {{form.file_name}}
+                    {{form.left}}
+                    {{form.right}}
+                    {{form.join_type}}
+                    {{form.data_0}}
+                    {{form.data_1}}
+                     <button type='submit' class='btn btn primary mt-2' 
+                     style="background-color: #000000; border-color:#000000; color: #FFD700">SUMBIT</button>
+                    <button type='reset' class='btn btn-primary mt-2' 
+                    style="background-color: white; border-color: red; color: black " >RESET</button>
+                </form>
+            </div>
+        </div>
+    {% else %}
+        <g class='group'>
+        <a type='button' class='btn btn-primary mt-2' href={% url 'graphs:redraw'  endpoint='merge' %}
+        style="background-color: white; border-color: red; color: black" >REDRAW</a>
+        </g>
+        <div class='error-msg' style='width:600;height:500'>
+            {{error|safe}}
+        </div>
+    {% endif %}
+{% elif not data.empty %}
+<g class='group'>
+    <a type='button' class='btn btn primary mt-2' href={% url 'graphs:download' file_name=name endpoint='merge' %} 
+    style="background-color: #000000; border-color:#000000; color: #FFD700">DOWNLOAD</a>
+    <a type='button' class='btn btn-primary mt-2' href={% url 'graphs:redraw'  endpoint='merge' %}
+    style="background-color: white; border-color: red; color: black" >REDRAW</a>
+    <div>
+        <b>Merge complete: {{data.shape}}</b>
+        <b>Click download to retrieve your file</b>
+    </div>
+</g>
+{% endif %}
+{% endblock %}
+
+
+
+
+  
+    

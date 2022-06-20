@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+
+<link rel="stylesheet" type="text/css" href="{% static 'styles/styles.css' %}"/>
+{% block content %}
+<div class='d-none row text-center mt-2'>
+    <div class='col'>
+        <h2><b>CHOOSE A SERVICE</b></h2>
+    </div>
+</div>
+
+<div class='home-grid'>
+     <div><img src="{% static 'media/append.gif' %}" height='120' width='120'/>
+        <a type='button' class='btn btn primary' href={% url 'graphs:append' %} 
+            style="background-color: #000000; border-color:#FFD700; color: #FFD700">
+            <b>APPEND</b>
+        </a>
+    </div>
+   
+    <div><img class='mb-2' src="{% static 'media/split.gif' %}" height='120' width='120'/>
+        <a type='button' class='btn btn primary' href={% url 'graphs:split' %} 
+            style="background-color: #000000; border-color:#FFD700; color: #FFD700">
+            <b>SPLIT</b>
+        </a>
+    </div>
+    <div><img class='mb-2' src="{% static 'media/merger.gif' %}" height='120' width='120'/>
+        <a type='button' class='btn btn primary' href={% url 'graphs:merge' %} 
+            style="background-color: #000000; border-color:#FFD700; color: #FFD700">
+            <b>MERGE</b>
+        </a>
+    </div>
+
+</div>
+
+{% endblock %}
+
+

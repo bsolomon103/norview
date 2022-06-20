@@ -1,0 +1,50 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+{% if not data %}
+    {% if not error %}
+        <div class='row text-center'>
+            <div class='col'>
+                <h2 class='d-none mt-2 mb-2'>Split</h2>
+                <img class='mt-2 mb-2' src="{% static 'media/split.gif' %}" width='70', height='70'/>
+            </div>
+        </div>
+        <div class='row text-center '>
+            <div class='col-lg-3 mx-auto mt-2'>
+                <form class='form' enctype='multipart/form-data' action='' method='post'>
+                    {% csrf_token %}
+                    {{form.file_name}}
+                    {{form.root}}
+                    {{form.branches}}
+                    {{form.token}}
+                    {{form.data}}
+                    <button type='sumbit' class='btn btn primary mt-2' 
+                    style="background-color: #000000; border-color:#FFD700; color: #FFD700">SUMBIT</button>
+                    <button type='reset' class='btn btn-primary mt-2' 
+                    style="background-color: white; border-color: red; color: black " >Reset</button>
+                </form>
+            </div>
+        </div>
+    {% else %}
+        <g class='group'>
+        <a type='button' class='btn btn-primary mt-2' href={% url 'graphs:redraw'  endpoint='split' %}
+        style="background-color: white; border-color: red; color: black" >RE-SPLIT</a>
+        </g>
+        <div class='error-msg' style='width:600;height:500'>
+            {{error|safe}}
+        </div>
+    {% endif %}
+{% elif not data.empty %}
+<g class='group'>
+    <a type='button' class='btn btn primary mt-2' href={% url 'graphs:download' file_name=name endpoint='split' %} 
+    style="background-color: #000000; border-color: #FFD700; color: #FFD700">DOWNLOAD</a>
+    
+    <a type='button' class='btn btn-primary mt-2' href={% url 'graphs:redraw'  endpoint='split' %}
+    style="background-color: white; border-color: red; color: black" >REDRAW</a>
+    <div>
+        <b>Split complete: {{data.shape}}</b>
+        <b>Click download to retrieve your file</b>
+    </div>
+</g>
+{% endif %}
+{% endblock %}
